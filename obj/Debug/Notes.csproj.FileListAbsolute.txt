@@ -11,3 +11,14 @@ D:\Notes\Notes\obj\Debug\Notes.FormNotes.resources
 D:\Notes\Notes\obj\Debug\Notes.FormLog.resources
 D:\Notes\Notes\bin\Debug\Database1.mdf
 D:\Notes\Notes\bin\Debug\Database1_log.ldf
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\obj\Debug\Notes.csprojAssemblyReference.cache
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\obj\Debug\Notes.FormLog.resources
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\obj\Debug\Notes.Properties.Resources.resources
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\obj\Debug\Notes.csproj.GenerateResource.cache
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\obj\Debug\Notes.csproj.CoreCompileInputs.cache
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\obj\Debug\Notes.exe
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\obj\Debug\Notes.pdb
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\bin\Debug\Notes.exe.config
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\bin\Debug\Notes.exe
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\bin\Debug\Notes.pdb
+C:\Users\bohachek\source\repos\Sofigo\Notes_lab\obj\Debug\Notes.Form1.resources

@@ -46,6 +46,7 @@ namespace Notes
                 modified = (DateTime)info.GetValue("modified", typeof(DateTime));
                 text = (String)info.GetValue("text", typeof(String));
 
+
                 oldText = text;
                 UpdatePreviewText();
             }
@@ -79,7 +80,7 @@ namespace Notes
                 set { }
             }
 
-            public String Text
+            public String NoteText
             {
                 /**
                  * The text value may be changed at any time by the user.

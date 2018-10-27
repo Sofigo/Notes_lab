@@ -14,10 +14,11 @@ namespace Notes
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormLog());
-            Application.Run(new FormNotes());
+            Application.Run(new FormLog());
+            //Application.Run(new FormNotes());
         }
     }
    
