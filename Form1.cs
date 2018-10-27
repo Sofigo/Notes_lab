@@ -23,20 +23,17 @@ namespace Notes
             InitializeComponent();
             sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\bohachek\Documents\Data.mdf;Integrated Security=True;Connect Timeout=30;");
 
-            this.userName = userName;
-        }
+            table = new DataTable();
+            table.Columns.Add("TitleCol", typeof(String));
+            table.Columns.Add("NoteCol", typeof(String));
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+            this.userName = userName;
+        
 
             SqlDataAdapter sda = new SqlDataAdapter("Select * From [tSetNotes] where username = '" + userName + "'", sqlcon);
 
-            table = new DataTable();
             sda.Fill(table);
-            table.Rows.Add("1", "2");
 
-            table.Columns.Add("TitleCol", typeof(String));
-            table.Columns.Add("NoteCol", typeof(String));
 
             dataGridView1.DataSource = table;
             //    dataGridView1.Columns["Message"].Visible = false;
