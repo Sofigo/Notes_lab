@@ -37,6 +37,7 @@
             this.textTitle = new System.Windows.Forms.TextBox();
             this.textNote = new System.Windows.Forms.TextBox();
             this.logout = new System.Windows.Forms.Button();
+            this.endEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,11 +50,6 @@
             this.saveButton.Text = "save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.ADD_Click);
-            this.editButton.Click += new System.EventHandler(this.EDIT_Click);
-            this.deleteButton.Click += new System.EventHandler(this.DELETE_Click);
-            this.logout.Click += new System.EventHandler(this.Logout_Click);
-
-
             // 
             // editButton
             // 
@@ -63,6 +59,7 @@
             this.editButton.TabIndex = 1;
             this.editButton.Text = "edit";
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.EDIT_Click);
             // 
             // deleteButton
             // 
@@ -72,6 +69,7 @@
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.DELETE_Click);
             // 
             // dataGridView1
             // 
@@ -121,12 +119,24 @@
             this.logout.TabIndex = 8;
             this.logout.Text = "logout";
             this.logout.UseVisualStyleBackColor = true;
+            this.logout.Click += new System.EventHandler(this.Logout_Click);
+            // 
+            // endEdit
+            // 
+            this.endEdit.Location = new System.Drawing.Point(580, 51);
+            this.endEdit.Name = "endEdit";
+            this.endEdit.Size = new System.Drawing.Size(174, 23);
+            this.endEdit.TabIndex = 9;
+            this.endEdit.Text = "end edtiting and save";
+            this.endEdit.UseVisualStyleBackColor = true;
+            this.endEdit.Click += new System.EventHandler(this.endEdit_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.endEdit);
             this.Controls.Add(this.logout);
             this.Controls.Add(this.textNote);
             this.Controls.Add(this.textTitle);
@@ -155,5 +165,6 @@
         private System.Windows.Forms.TextBox textTitle;
         private System.Windows.Forms.TextBox textNote;
         private System.Windows.Forms.Button logout;
+        private System.Windows.Forms.Button endEdit;
     }
 }

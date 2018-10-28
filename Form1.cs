@@ -17,11 +17,12 @@ namespace Notes
         public string userName;
         SqlConnection sqlcon;
         SqlDataAdapter sda;
+        String editIndex;
 
         public Form1(string userName)
         {
             InitializeComponent();
-            
+            endEdit.Visible = false;
             this.userName = userName;
         
 
@@ -32,14 +33,15 @@ namespace Notes
             table.Columns.Add("NoteCol", typeof(String));
 
 
-            sda = new SqlDataAdapter("Select title TitleCol, noteText NoteCol From [tSetNotes] where username = '" + userName + "'", sqlcon);
+            sda = new SqlDataAdapter("Select id Id, title TitleCol, noteText NoteCol From [tSetNotes] where username = '" + userName + "'", sqlcon);
 
             sda.Fill(table);
-
+            table.PrimaryKey = new DataColumn[] { table.Columns["Id"] };
 
             dataGridView1.DataSource = table;
-            //    dataGridView1.Columns["Message"].Visible = false;
+            dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["TitleCol"].Width = 140;
+            dataGridView1.Columns["NoteCol"].Width = 370;
 
             sda = new SqlDataAdapter();
 
@@ -57,23 +59,28 @@ namespace Notes
         }
         private void DELETE_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
+            String index = dataGridView1.CurrentRow.Cells[2].Value.ToString();
 
 
-            sda.DeleteCommand = new SqlCommand("DELETE FROM [tSetNotes] where username =  '" + userName.ToString() + "' and title = '" + table.Rows[index][0].ToString() + "'", sqlcon);
-            
-            MessageBox.Show("DELETE FROM [tSetNotes] where username =  '" + userName.ToString() + "' and title = '" + table.Rows[index][0].ToString() + "'");
-            table.Rows[index].Delete();
+            sda.DeleteCommand = new SqlCommand("DELETE FROM [tSetNotes] where Id = cast('" + index + "' as int)", sqlcon);
+            try {
+                sda.DeleteCommand.ExecuteNonQuery();
+                table.Rows.Find(index).Delete();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show( "An error occured");
+            }
 
         }
         private void EDIT_Click(object sender, EventArgs e)
         {
-            int index = dataGridView1.CurrentCell.RowIndex;
+            editIndex = dataGridView1.CurrentRow.Cells[2].Value.ToString();
 
-            MessageBox.Show(table.Rows[index][0].ToString());
+            textTitle.Text = table.Rows.Find(editIndex)[0].ToString();
+            textNote.Text = table.Rows.Find(editIndex)[1].ToString();
 
-            //     sda.DeleteCommand = new SqlCommand("DELETE FROM [tSetNotes] where username =  '" + userName + "' and title = '" table.Rows[index].", sqlcon);
-            //   table.Rows[index].Delete();
+            endEdit.Visible = true;
 
         }
 
@@ -84,6 +91,27 @@ namespace Notes
             FormLog dd = new FormLog();
             dd.Show();
         }
-        
+
+        private void endEdit_Click(object sender, EventArgs e)
+        {
+
+            sda.UpdateCommand = new SqlCommand("UPDATE [tSetNotes] set title =  '" + textTitle.Text + "' , noteText = '" + textNote.Text + "' where Id =  cast('" + editIndex + "' as int)", sqlcon);
+
+           try {
+                sda.UpdateCommand.ExecuteNonQuery();
+
+                table.Rows.Find(editIndex)[0] = textTitle.Text;
+                table.Rows.Find(editIndex)[1] = textNote.Text;
+
+                textTitle.Clear();
+                textNote.Clear();
+                endEdit.Visible = false;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Too long expression was typed ");
+            }
+
+        }
     }
 }
